@@ -24,7 +24,7 @@ void Wind_get_dir() {
   if (Direction == 360) {
     Direction = 0;
   }
-
+ 
   if ((Direction) < 23) {
     DirNameIx = 0;  // N
   }
