@@ -17,7 +17,7 @@
 
 const char *gc_hostname = "gizwind";
 
-Metro go_metro_meas(60000);
+Metro go_metro_meas(60000); //(60000);
 
 //--------------------------------------------------------------------------------------
 void setup() {
@@ -59,7 +59,7 @@ void loop() {
   delay(500);
 }
 
-void do_sensor() {
+void do_sensor   () {
 
   set_rgb(0, 255, 0);
 

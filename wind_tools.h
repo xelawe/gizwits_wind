@@ -18,7 +18,8 @@ float RPM;       // RPM count
 void Wind_get_dir() {
   // Wind Direction
   PotValue = analogRead(PotPin);     // read the value from the potmeter
-  Direction = map(PotValue, 0, 1023, 0, 359);
+  DebugPrintln(PotValue);
+  Direction = map(PotValue, 0, 994, 0, 359);
   Direction = constrain(Direction, 0, 360);
   if (Direction == 360) {
     Direction = 0;
@@ -51,7 +52,7 @@ void Wind_get_dir() {
   if ((Direction > 336) && (Direction <= 360)) {
     DirNameIx = 0;  // N
   }
-
+  DebugPrintln(DirNames[DirNameIx]);
 }
 
 //----------------------------------------------------------------------
@@ -86,7 +87,7 @@ void Wind_get_speed() {
 
 //--------------------------------------------------------------------
 // This is the function that interrupt calls to measure  RPM
-void rpmint()   {
+void ICACHE_RAM_ATTR rpmint()   {
 
   // Exit interrupt w/o action?
   if ( Int1Exit ) {
