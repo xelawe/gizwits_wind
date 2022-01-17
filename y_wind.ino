@@ -8,7 +8,7 @@ void Wind_get_dir() {
   if (Direction == 360) {
     Direction = 0;
   }
- 
+
   if ((Direction) < 23) {
     DirNameIx = 0;  // N
   }
@@ -68,7 +68,6 @@ void Wind_get_speed() {
 
 }
 
-
 //--------------------------------------------------------------------
 // This is the function that interrupt calls to measure  RPM
 void ICACHE_RAM_ATTR rpmint()   {
@@ -84,3 +83,10 @@ void ICACHE_RAM_ATTR rpmint()   {
   }
 }
 // end of RPM measure
+
+void init_wind() {
+  // Setup Wind-Sensor
+  Int1Exit = true;
+  pinMode(RPMsensor, INPUT);
+  attachInterrupt(RPMsensor, rpmint, FALLING);
+}

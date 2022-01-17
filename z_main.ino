@@ -15,10 +15,7 @@ void setup() {
   set_rgb(0, 0, 0);
   delay (1000);
 
-  // Setup Wind-Sensor
-  Int1Exit = true;
-  pinMode(RPMsensor, INPUT);
-  attachInterrupt(RPMsensor, rpmint, FALLING);
+  init_wind();
 
   do_sensor();
 }
