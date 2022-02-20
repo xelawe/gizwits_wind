@@ -41,6 +41,13 @@ void Wind_get_dir() {
 
 //----------------------------------------------------------------------
 void Wind_get_speed() {
+  // http://cactus.io/hookups/weather/anemometer/davis/hookup-arduino-to-davis-anemometer-wind-speed
+  // https://cdn.shopify.com/s/files/1/0515/5992/3873/files/7911_SS.pdf
+  //  Wind Speed 600 rev/hr = 1 mph
+  //   V = P(2.25/T)
+  //   V = speed in mph
+  //   P = no. of pulses per sample period
+  //   T = sample period in seconds
 
   // measure RPM
   Int1Exit = true; //Disable int1
@@ -48,6 +55,34 @@ void Wind_get_speed() {
   Int1Exit = false; //Enables int1
   delay(3000);
   Int1Exit = true; //Disable int1
+
+  // convert to mp/h using the formula
+  // V=P(2.25/T)
+  // T = 3 seconds
+  // V = P(2.25/3) = P * 0.75
+
+  WindSpeedmph = RPMTops * 0.75;
+  WindSpeedkmh = WindSpeedmph * 1.60934;
+
+  //  Serial.print(RPMTops); Serial.print("\t\t");
+  //  Serial.print("mph: ");
+  //  Serial.println(WindSpeedmph);
+  //  Serial.print("kmh: ");
+  //  Serial.println(WindSpeedkmh);
+
+}
+
+//----------------------------------------------------------------------
+void Wind_get_speed_old() {
+
+  // measure RPM
+  Int1Exit = true; //Disable int1
+  RPMTops = 0;   //Set NbTops to 0 ready for calculations
+  Int1Exit = false; //Enables int1
+  delay(3000);
+  Int1Exit = true; //Disable int1
+
+  float RPM;
 
   // convert to km/h
   if ((RPMTops >= 0) and (RPMTops <= 21)) {

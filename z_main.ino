@@ -12,6 +12,8 @@ void setup() {
 
   init_ota(gv_clientname);
 
+  init_mqtt_local( ) ;
+
   set_rgb(0, 0, 0);
   delay (1000);
 
@@ -25,6 +27,8 @@ void loop() {
   check_wifi_conn();
 
   check_ota();
+
+  check_mqtt_reset();
 
   if (go_metro_meas.check() == 1) {
 

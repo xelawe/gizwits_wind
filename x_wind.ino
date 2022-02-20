@@ -11,4 +11,6 @@ int PotValue = 0;      // variable to store the value coming from the potentiome
 volatile unsigned long RPMTops;  // RPM tops counter in interrupt routine
 volatile unsigned long ContactTime;  // Timer to avoid conatct bounce in interrupt routine
 volatile boolean Int1Exit;  //exit INT1 w/o action
-float RPM;       // RPM count
+
+float WindSpeedmph;
+float WindSpeedkmh;

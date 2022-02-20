@@ -13,7 +13,7 @@ void do_sensor   () {
   Wind_get_speed();
 
   DebugPrint("Speed: ");
-  DebugPrint(RPM);
+  DebugPrint(WindSpeedkmh);
   DebugPrintln(" km/h");
 
   set_rgb(0, 0, 0);
@@ -23,8 +23,9 @@ void do_sensor   () {
 void send_vals() {
   set_rgb(0, 0, 255);
 
-  send_val(14, Direction);
-  send_val(13, RPM);
+  //send_val(14, Direction);
+  //send_val(13, WindSpeedkmh);
+  pub_sens();
 
   set_rgb(0, 0, 0);
 }
