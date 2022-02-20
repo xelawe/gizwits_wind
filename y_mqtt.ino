@@ -23,7 +23,8 @@ void pub_sens() {
   // if (!gv_error) {
   wind["Richtung"] = (int)(Direction);
   wind["RichtungName"] = DirNames[DirNameIx];
-  wind["Geschwindigkeit"] = WindSpeedkmh;
+  //wind["Gesch"] = WindSpeedkmh;
+  wind["Geschwindigkeit"] = (int)(WindSpeedkmh * 10 + 0.5) / 10.0;
   //   wind["Status"] = "OK";
   // } else {
   //   wind["Status"] = "ERROR";
